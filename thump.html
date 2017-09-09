@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Thump Beat Slicer and Sequencer">
+    <meta name="author" content="CreoFlux LLC">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thump</title>
+    <link href="thump.css" rel="stylesheet" title="Thump Style">
+    <script type="text/javascript" src="thump.js"></script>
+</head>
+<body>
+
+<h2>thump : beat slicer</h2>
+
+
+<h4>waveform slicer</h4>
+<div class="pane">
+<div id='canvasHost' >
+    <canvas id='waveformLayer' class='canvasLayer'></canvas>
+    <canvas id='lineLayer' class='canvasLayer'></canvas>
+    <canvas id='topLayer' class='canvasLayer'></canvas>
+</div>
+
+<label class="greenButton">
+    <input type='file' id='fileInput' />
+    open audio file
+</label>
+<br>
+        <span class="bubble-wrap"><span class="bubble">slice</span> control + left click</span> &nbsp;
+        <span class="bubble-wrap"><span class="bubble">play slice</span> left click</span> &nbsp;
+        <span class="bubble-wrap"><span class="bubble">remove</span> left click [marker]</span> &nbsp;
+        <span class="bubble-wrap"><span class="bubble">add to sequencer</span> shift + left click </span>
+
+
+
+</div>
+
+<h4>sequencer</h4>
+<div class="pane">
+<div id='sequencerHost'>
+
+
+<label class="greenButton" onclick="playLoop()">play sequence</label>
+
+bpm: <input type="number" id="bpm" value="120"/> &nbsp;
+loop count: <input type="number" id="loopTimes" value="2" min="1" max="2" width="20px"/> &nbsp;
+slop: <input type="range" id="slopAmount" min="0.0" max="1.0" step="0.01" value="0.0"> &nbsp;
+pitch: <input type="range" id="pitchAmount" min="0.5" max="1.0" step="0.01" value="0.5">&nbsp;
+<div id='sequencer'></div>
+</div>
+</div>
+</body>
+
+</html>

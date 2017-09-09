@@ -1,0 +1,247 @@
+h2{
+  font-size: 36px;
+  border-bottom: 1px solid #0275d8;
+  background:#0275d8;
+  color:white;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  display:inline-block;
+  padding:3px 15px;
+
+}
+
+h2:after{
+  left:0px;
+  display:block;
+  position:absolute;
+  width:100%;
+  height:2px;
+  margin-top:2px;
+  content: " ";
+  background:#0275d8;
+}
+
+h4{
+  font: normal normal normal 20px/1 Helvetica, arial, sans-serif;
+  color:black;
+  background:#0275d8;
+  color:white;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  padding: 3px 15px;
+  margin-bottom: 15px;
+  display:table-cell;
+}
+
+.bubble{
+  color:white;
+  background:#0275d8;
+  padding : 3px;
+  font-size: 0.8rem;
+}
+
+.bubble-wrap{
+  border-color:#0275d8;
+  border-style:solid;
+  border-width: 0.5px;
+  padding:3px 3px 3px 0px;
+  margin:3px;
+  font-size: 0.8rem;
+}
+
+
+input[type='range'] {
+    -webkit-appearance: none;
+    border-color:#0275d8;
+    height: 15px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+input[type='range']:hover {
+    opacity: 1;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: white;
+    cursor: pointer;
+}
+
+input[type='range']::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: white;
+    cursor: pointer;
+}
+
+
+body {
+	font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.0;
+	color: #292b2c;
+    padding-left : 15px;
+    padding-right:15px;
+    width:1080px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.greenButton {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    margin: 10px 0  10px 0;
+    background-color: #3c763d;
+    color: white;
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -o-user-select:none;
+}
+
+p{
+ padding: 1px;   
+}
+
+.pane{
+    border-color:#5bc0de;
+    border-style: solid;
+    border-width:0.5px;
+    display:inline-block;
+    padding:10px 25px 10px 10px;
+    margin-bottom:25px;
+}
+
+#canvasHost{
+  position : relative;
+  border-radius: 25px;
+  height: 200px;
+  width: 1024px;
+ }
+
+#sequencerHost{
+    padding-top : 25px;
+}
+
+ .markerLine{
+  position: absolute;
+  border-left : 1px dashed rgb(0,0,0, .5);
+  height:200px;
+  width: 0px;
+  z-index: 200 !important;
+ }
+
+ .canvasLayer{
+  position : absolute;
+  top : 0;
+  left : 0;
+    
+ }
+ 
+ .removeButton {
+  color: yellow;
+  background-color: #a94442;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  padding: 0px;
+  font-size: small;
+ }
+ 
+ .previewButton{
+  background-color:#0275d8;
+  width: 20px;
+  height: 20px;
+  margin: 3px;
+  border-radius: 25px;
+  margin-right: 25px;
+ }
+ 
+ .normalButton{
+  background-color:lightgrey;
+  width: 20px;
+  height: 20px;
+  margin: 3px;
+  border-radius: 25px;
+ }
+ 
+ .beatButton{
+  background-color:grey;
+  width: 20px;
+  height: 20px;
+  margin: 3px;
+  border-radius: 5px;
+  margin-left: 20px;
+ }
+ 
+ .selectedButton{
+  background-color:#0275d8;
+  width: 20px;
+  height: 20px;
+  margin: 3px;
+  border-radius: 25px;
+ }
+ 
+ .selectedBeatButton{
+  background-color:darkblue;
+  width: 20px;
+  height: 20px;
+  margin: 3px;
+  border-radius: 5px;
+  margin-left: 20px;
+ }
+ 
+ .sequencerRow{
+  min-height: 20px;
+  height : 30px;
+  width: 100%;
+ }
+ 
+ #bpm{
+  width: 55px;
+ }
+ 
+ #loopTimes{
+  width: 35px;
+ }
+ 
+ #slopAmount{
+  width: 75px;
+ }
+ 
+ #pitchAmount{
+  width: 75px;
+ }
+
+ #waveformLayer{
+  z-index : 0;
+ }
+
+ #lineLayer{
+  z-index : 1;
+ }
+
+ #topLayer{
+  z-index : 2;
+ }
+ 
+ #sequencer{
+  padding-top: 40px;
+ }
+
+ #fileInput{
+  padding-top: 25px;
+  padding-bottom: 25px;
+ }
