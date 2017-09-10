@@ -59,7 +59,7 @@ function init() {
     _topLayer.onmousemove = function(e){
         clearCanvas(_topContext);
     
-        if(e.ctrlKey){
+        if(e.ctrlKey  || e.metaKey ){
             drawVertLine(_topContext, e.layerX, 'rgba(24, 220, 24, 0.8)');
         }else{
             var slice = findSlice(e.layerX);
@@ -74,7 +74,7 @@ function init() {
     
         if(_decodedSamples === null) { return; }
     
-        if(e.ctrlKey){
+        if(e.ctrlKey || e.metaKey){
             _markers.push(e.layerX);
             drawMarkerLine(_lineContext, e.layerX);
         }else {
@@ -372,6 +372,44 @@ function fileDecodeDone(decodedData){
     removeAllSequencerRows();
     
     drawWaveform(decodedData.getChannelData(0), _waveformContext, _canvasHeight, _canvasWidth);
+    
+    if(document.getElementById('autoSlice').checked){
+        detectBeats();
+    }
+}
+
+
+function computeE(data, start, end){
+    var sum = 0;
+    
+    for(var i =start; i < end; i++){
+        sum += data[i] * data[i];
+    }
+    
+    return sum;
+}
+
+function detectBeats(){
+    var leftData = _decodedSamples.getChannelData(0);
+    
+    var windowSize = 512;
+    
+    var lastE = computeE(leftData, 0, windowSize);
+    
+    for(var i=leftData.length - windowSize; i > 0 ; i-=windowSize){
+        var E = computeE(leftData, i, i + windowSize);
+        
+        if( (lastE - E) > 1.4){
+
+            var scale = (leftData.length / _canvasWidth);
+            var x = i / scale;
+
+            _markers.push(x);
+            drawMarkerLine(_lineContext, x);
+        }
+        lastE = E;
+    }
+    
 }
 
 window.addEventListener('load', init, false);
