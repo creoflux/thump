@@ -92,6 +92,18 @@ function init() {
 
     };
 
+    document.getElementById('autoSliceSensitivity').addEventListener('change', function(){
+        if(_decodedSamples != null){
+
+            clearCanvas(_topContext);
+            
+            removeAllMarkers();
+            
+            detectBeats(document.getElementById('autoSliceSensitivity').value);
+        }
+    });
+
+    
     document.getElementById('fileInput').addEventListener('change', openFile, false);
         
   }
@@ -374,7 +386,7 @@ function fileDecodeDone(decodedData){
     drawWaveform(decodedData.getChannelData(0), _waveformContext, _canvasHeight, _canvasWidth);
     
     if(document.getElementById('autoSlice').checked){
-        detectBeats();
+        detectBeats(document.getElementById('autoSliceSensitivity').value);
     }
 }
 
@@ -389,7 +401,7 @@ function computeE(data, start, end){
     return sum;
 }
 
-function detectBeats(){
+function detectBeats(sensitivity){
     var leftData = _decodedSamples.getChannelData(0);
     
     var windowSize = 512;
@@ -399,7 +411,7 @@ function detectBeats(){
     for(var i=leftData.length - windowSize; i > 0 ; i-=windowSize){
         var E = computeE(leftData, i, i + windowSize);
         
-        if( (lastE - E) > 1.4){
+        if( (lastE - E) > sensitivity ){
 
             var scale = (leftData.length / _canvasWidth);
             var x = i / scale;
@@ -411,6 +423,9 @@ function detectBeats(){
     }
     
 }
+
+
+
 
 window.addEventListener('load', init, false);
 
